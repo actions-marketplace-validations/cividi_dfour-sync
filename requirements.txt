@@ -1,1 +1,1 @@
-frictionless_dfour==0.1.*
+frictionless_dfour>=0.1.*
