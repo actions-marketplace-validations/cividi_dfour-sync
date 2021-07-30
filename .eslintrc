@@ -1,0 +1,27 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "extends": [
+    "standard",
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "indent": "off",
+    "no-unused-vars": "off",
+    "import/no-duplicates": "off",
+    "no-use-before-define": "off",
+    "no-useless-constructor": "off",
+    "space-before-function-paren": "off",
+    "no-prototype-builtins": "off",
+    "no-dupe-class-members": "off",
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline"
+    }]
+  }
+}

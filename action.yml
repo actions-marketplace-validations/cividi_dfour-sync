@@ -1,0 +1,30 @@
+name: dfour Sync
+description: A GitHub Action to sync data packages between a repository and a dfour storage instance.
+author: cividi
+branding:
+  icon: refresh-cw
+  color: green
+runs:
+  using: docker
+  image: Dockerfile
+inputs:
+  dfour_endpoint:
+    description: dfour endpoint to sync with
+    default: https://sandbox.dfour.space
+    required: false
+  dfour_username:
+    description: dfour username for upload
+    default: test
+    required: true
+  dfour_password:
+    description: dfour password for upload
+    default: test
+    required: true
+  dfour_workspace:
+    description: dfour workspace hash to sync with
+    default: ABC123
+    required: true
+  folder:
+    description: repository folder to sync with
+    default: "_out/snapshots"
+    required: false
