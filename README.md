@@ -1,6 +1,8 @@
 # dfour Sync
 
-dfour Sync is an experimental GitHub Action to sync data packages between a GitHub repository and dfour storage instance.
+dfour Sync is an experimental GitHub Action to sync data packages between a GitHub repository and dfour storage instance. It is based on [`frictionless-dfour`](https://github.com/cividi/frictionless-dfour). To run manually use the included [command line](https://github.com/cividi/frictionless-dfour#command-line-usage) of `frictionless-dfour`.
+
+Test the [Template/Example Repo](https://github.com/cividi/dfour-sync-example).
 
 ## Purpose
 
@@ -8,6 +10,10 @@ dfour Sync is an experimental GitHub Action to sync data packages between a GitH
 - **Backup**: Easily add data packages from a workspace to version control and vice versa
 
 ## Usage
+
+- Create an empty folder and add a `.gitignore` file
+- Add the following as `.github/workflows/main.yaml`
+- Add repository secrets
 
 ```yaml
 on: push
@@ -28,16 +34,22 @@ jobs:
         folder: _out/snapshots # default
     # For committing back downloaded snapshots
     - name: push
-      uses: devops-infra/action-commit-push@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        add_timestamp: true
-        commit_prefix: "[AUTO]"
-        commit_message: "Automatic commit via dfour-sync"
-        target_branch: main
+      uses: actions-x/commit@v2
 ```
 
 ## Requirements
 
 - A folder with data packages to be synced (defaults to `_out/snapshots`)
-- Files must be prefixed (seperator: dash) with the topic, e.g. `structure-01-buildings.json` -> inferred topic `Structure`
+- Topics and bfsNumbers stored in a `dfour.yaml` in the same folder 
+
+If the folder is empty and hence all snapshots from workspace are downloaded, a `dfour.yaml` will be created automatically.
+
+Structure of `dfour.yaml`:
+```yaml
+WORKSPACEHASH:
+  endpoint: https://sandbox.dfour.space
+  snapshots:
+    snapshot-name:
+      topic: TOPIC
+      bfsNumber: 123
+```
