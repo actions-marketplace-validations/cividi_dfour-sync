@@ -1,6 +1,6 @@
 {
   "name": "dfour-sync",
-  "version": "0.1.0b3",
+  "version": "0.1.0b4",
   "description": "A GitHub Action to sync data packages between a repository and a dfour storage instance",
   "main": "lib/index.js",
   "directories": {
