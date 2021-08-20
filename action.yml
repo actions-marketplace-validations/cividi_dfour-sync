@@ -6,7 +6,7 @@ branding:
   color: green
 runs:
   using: docker
-  image: Dockerfile
+  image: ghcr.io/cividi/dfoursyncrunner:latest
 inputs:
   dfour_endpoint:
     description: dfour endpoint to sync with
